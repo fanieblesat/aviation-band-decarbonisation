@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "aviation-band-decarbonisation: distance-band model of SAF supply risk and corrective action in European aviation"
+authors:
+  - family-names: Niebles-Atencio
+    given-names: Fabricio
+    affiliation: University of Hamburg
+  - family-names: Rivera-Charún
+    given-names: Lucía
+    affiliation: Universidad de Ingeniería y Tecnología
+license: MIT
+version: 0.1.0
+date-released: 2026-11-09

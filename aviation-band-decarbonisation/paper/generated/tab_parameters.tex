@@ -1,0 +1,58 @@
+\texttt{emission\_\allowbreak{}factors.\allowbreak{}ttw\_\allowbreak{}co2\_\allowbreak{}per\_\allowbreak{}t\_\allowbreak{}fuel} & 3.16 & sourced & ICAO CO2 factor for Jet A-1 (used by EUROCONTROL and EASA) \\
+\texttt{emission\_\allowbreak{}factors.\allowbreak{}wtw\_\allowbreak{}fossil\_\allowbreak{}g\_\allowbreak{}per\_\allowbreak{}mj} & 89.0 & sourced & CORSIA default life-cycle value for fossil jet fuel (icao\_corsia) \\
+\texttt{emission\_\allowbreak{}factors.\allowbreak{}lhv\_\allowbreak{}mj\_\allowbreak{}per\_\allowbreak{}kg} & 43.15 & sourced & ICAO / CORSIA lower heating value of jet fuel \\
+\texttt{bands.\allowbreak{}stage\_\allowbreak{}triangular\_\allowbreak{}km} & see repository config & assumption & shape chosen to reflect typical European route structure; band edges from eurocontrol2021 \\
+\texttt{bands.\allowbreak{}flight\_\allowbreak{}share\_\allowbreak{}2019} & 0.24,\allowbreak{} 0.46,\allowbreak{} 0.24,\allowbreak{} 0.06 & sourced & eurocontrol2021 (24 \% below 500 km, 6 \% above 4000 km) and prc2021 (about 70 \% below 1500 km) \\
+\texttt{bands.\allowbreak{}co2\_\allowbreak{}share\_\allowbreak{}2019} & 0.038,\allowbreak{} 0.212,\allowbreak{} 0.27,\allowbreak{} 0.48 & sourced & eurocontrol2021 (3.8 \% and 48 \%) and prc2021 (about 25 \% below 1500 km) \\
+\texttt{bands.\allowbreak{}seatkm\_\allowbreak{}share\_\allowbreak{}longhaul\_\allowbreak{}min} & 0.4 & validation & eurocontrol2021 ("more than 40 \% of seat-kilometres") \\
+\texttt{bands.\allowbreak{}seat\_\allowbreak{}share\_\allowbreak{}longhaul} & 0.1 & validation & eurocontrol2021 ("10 \% of total seats") \\
+\texttt{bands.\allowbreak{}gco2e\_\allowbreak{}per\_\allowbreak{}pkm\_\allowbreak{}germany\_\allowbreak{}2024} & 284,\allowbreak{} 195,\allowbreak{} 156,\allowbreak{} 207 & validation & ifeu2026 (TREMOD-AV, German departures, average cabin, incl. WTT); compared as ratios only \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}seats} & 76,\allowbreak{} 180,\allowbreak{} 320 & assumption & typical European configurations (ATR72/E175, A320/737-800, A330/A350/787) \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}lto\_\allowbreak{}fuel\_\allowbreak{}t} & 0.25,\allowbreak{} 0.6,\allowbreak{} 1.8 & assumption & order of magnitude of ICAO LTO-cycle fuel for representative types (ICAO Engine Emissions Databank) \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}cruise\_\allowbreak{}fuel\_\allowbreak{}kg\_\allowbreak{}per\_\allowbreak{}km} & 1.5,\allowbreak{} 2.4,\allowbreak{} 5.6 & calibrated & current-generation type values (ATR72-600/E175, A320neo, A350-900) of order 1.5/2.4/5.6 kg per km; RG and WB scaled by the code to match co2\_share\_2019, NB fixed as level anchor \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}weight\_\allowbreak{}curvature\_\allowbreak{}per\_\allowbreak{}km} & 0.0,\allowbreak{} 2e-05,\allowbreak{} 2e-05 & assumption & carriage of fuel weight raises fuel per km with range (Breguet); calibrated scaling absorbs level \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}taxi\_\allowbreak{}fuel\_\allowbreak{}kg\_\allowbreak{}per\_\allowbreak{}min} & 6.0,\allowbreak{} 11.0,\allowbreak{} 22.0 & assumption & ICAO idle (7 \% thrust) fuel flow, order of magnitude for representative engines \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}hold\_\allowbreak{}fuel\_\allowbreak{}kg\_\allowbreak{}per\_\allowbreak{}min} & 22.0,\allowbreak{} 40.0,\allowbreak{} 95.0 & assumption & low-altitude holding fuel flow, order of magnitude (BADA-type values) \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}utilisation\_\allowbreak{}km\_\allowbreak{}per\_\allowbreak{}year} & 1.0e6,\allowbreak{} 2.3e6,\allowbreak{} 4.6e6 & assumption & about 2 000 / 3 200 / 4 800 block hours per year at typical block speeds \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}newgen\_\allowbreak{}fuel\_\allowbreak{}reduction} & 0.15,\allowbreak{} 0.17,\allowbreak{} 0.22 & assumption & ATR-600 / A320neo-737MAX / A350-787 vs predecessor generation, manufacturer claims of 15-25 \% \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}newgen\_\allowbreak{}max\_\allowbreak{}age\_\allowbreak{}years} & 6,\allowbreak{} 8,\allowbreak{} 12 & assumption & entry into service of current generation (2016-2018 NB, 2011-2015 WB) relative to base year \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}list\_\allowbreak{}price\_\allowbreak{}musd} & 27.0,\allowbreak{} 110.6,\allowbreak{} 317.4 & sourced & Airbus 2018 list prices (A320neo, A350-900); ATR72-600 widely reported list price \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}market\_\allowbreak{}to\_\allowbreak{}list\_\allowbreak{}ratio} & 0.5 & assumption & typical discount of transaction to list price; varied 0.4-0.6 \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}residual\_\allowbreak{}value\_\allowbreak{}share\_\allowbreak{}old} & 0.2 & assumption & residual value of an aircraft retired near end of economic life, as share of new market value \\
+\texttt{aircraft\_\allowbreak{}classes.\allowbreak{}usd\_\allowbreak{}to\_\allowbreak{}eur} & 0.92 & assumption & average 2024 exchange rate \\
+\texttt{band\_\allowbreak{}class\_\allowbreak{}mix} & see repository config & assumption & share of flights by aircraft class in each band; varied in sensitivity \\
+\texttt{fleet.\allowbreak{}age\_\allowbreak{}max\_\allowbreak{}years} & 25 & assumption & typical retirement age of commercial aircraft in Europe \\
+\texttt{fleet.\allowbreak{}deterioration\_\allowbreak{}per\_\allowbreak{}year} & 0.002 & assumption & engine/airframe performance deterioration of about 0.1-0.3 \% per year \\
+\texttt{fleet.\allowbreak{}new\_\allowbreak{}delivery\_\allowbreak{}improvement\_\allowbreak{}per\_\allowbreak{}year} & 0.01 & assumption & fuel-efficiency improvement of successive deliveries, below the ICAO 2 \%/yr aspirational goal \\
+\texttt{fleet.\allowbreak{}load\_\allowbreak{}factor\_\allowbreak{}mean} & 0.82 & assumption & European passenger load factor around 80-85 \% (2019 and 2024) \\
+\texttt{fleet.\allowbreak{}payload\_\allowbreak{}fuel\_\allowbreak{}sensitivity} & 0.15 & assumption & relative fuel increase per unit increase in load factor (payload weight about 10-15 \% of take-off mass) \\
+\texttt{demand.\allowbreak{}flights\_\allowbreak{}growth\_\allowbreak{}per\_\allowbreak{}year} & 0.016 & sourced & eurocontrol2024outlook base scenario, average annual growth 2023-2050 \\
+\texttt{demand.\allowbreak{}growth\_\allowbreak{}low\_\allowbreak{}high} & 0.01,\allowbreak{} 0.022 & assumption & range for sensitivity, bracketing the outlook's low and high scenarios \\
+\texttt{demand.\allowbreak{}co2\_\allowbreak{}2024\_\allowbreak{}mt} & 202.7 & sourced & prr2024 (CO2 of flights in the EUROCONTROL area, 2024, tank-to-wake) \\
+\texttt{atm.\allowbreak{}additional\_\allowbreak{}taxi\_\allowbreak{}out\_\allowbreak{}min} & 4.0 & assumption & network-average additional taxi-out time; airport values in prr2024 range 2-8 min \\
+\texttt{atm.\allowbreak{}additional\_\allowbreak{}asma\_\allowbreak{}min} & 2.0 & assumption & network-average additional ASMA time; T30 airport values in prr2024 up to 7.5 min \\
+\texttt{atm.\allowbreak{}kea\_\allowbreak{}excess\_\allowbreak{}distance} & 0.0316 & sourced & prr2024 horizontal en-route flight efficiency of the actual trajectory, 2024 \\
+\texttt{atm.\allowbreak{}european\_\allowbreak{}airspace\_\allowbreak{}km} & 2000 & assumption & share of a long-haul trajectory flown in EUROCONTROL airspace; en-route inefficiency applied to min(d, this) \\
+\texttt{atm.\allowbreak{}benefit\_\allowbreak{}pool\_\allowbreak{}intra\_\allowbreak{}europe} & 0.09 & sourced & prr2024 ("ATM-related benefit pool ... around 9 \%"); calibration target for flights below 4000 km \\
+\texttt{atm.\allowbreak{}recoverable\_\allowbreak{}fraction} & 0.5 & assumption & prc2021 notes the pool cannot be fully recovered; varied 0.3-0.7 \\
+\texttt{atm.\allowbreak{}recovery\_\allowbreak{}full\_\allowbreak{}year} & 2035 & assumption & horizon for SES/SESAR deployment in the operational-efficiency scenario \\
+\texttt{atm.\allowbreak{}corrective\_\allowbreak{}max\_\allowbreak{}fraction} & 0.7 & assumption & upper bound on the share of the benefit pool recoverable with additional (corrective) effort \\
+\texttt{atm.\allowbreak{}gross\_\allowbreak{}cost\_\allowbreak{}eur\_\allowbreak{}per\_\allowbreak{}t\_\allowbreak{}co2} & 150 & assumption & implementation cost of ATM measures per tonne CO2 avoided, before fuel savings; varied 50-500 \\
+\texttt{saf.\allowbreak{}mandate\_\allowbreak{}steps} & 2025: 0.02; 2030: 0.06; 2035: 0.2; 2040: 0.34; 2045: 0.42; 2050: 0.7 & sourced & eu2023 Annex I (minimum shares per period) \\
+\texttt{saf.\allowbreak{}synthetic\_\allowbreak{}steps} & 2030: 0.012; 2032: 0.02; 2035: 0.05; 2040: 0.1; 2045: 0.15; 2050: 0.35 & sourced & eu2023 Annex I (synthetic sub-mandate; 2030-2031 and 2032-2034 as period averages) \\
+\texttt{saf.\allowbreak{}base\_\allowbreak{}share\_\allowbreak{}2024} & 0.006 & sourced & easa2025refuel (SAF about 0.6 \% of EU aviation fuel in 2024) \\
+\texttt{saf.\allowbreak{}theta\_\allowbreak{}bio} & 0.75 & assumption & life-cycle reduction of bio-SAF (HEFA from wastes about 80 \%, RED minimum 65 \%); varied 0.65-0.85 \\
+\texttt{saf.\allowbreak{}theta\_\allowbreak{}ptl} & 0.85 & assumption & life-cycle reduction of e-SAF (RFNBO minimum 70 \%); varied 0.70-0.95 \\
+\texttt{saf.\allowbreak{}price\_\allowbreak{}fossil\_\allowbreak{}eur\_\allowbreak{}t} & 734 & sourced & easa2025prices (2024 reference price, conventional aviation fuel) \\
+\texttt{saf.\allowbreak{}price\_\allowbreak{}bio\_\allowbreak{}eur\_\allowbreak{}t} & 2085 & sourced & easa2025prices (2024 reference price, aviation biofuels) \\
+\texttt{saf.\allowbreak{}price\_\allowbreak{}ptl\_\allowbreak{}eur\_\allowbreak{}t} & 7695 & sourced & easa2025prices (2024 reference price, synthetic aviation fuels) \\
+\texttt{saf.\allowbreak{}disruption\_\allowbreak{}r\_\allowbreak{}range} & 0.57,\allowbreak{} 0.95 & derived & martulli2025 (EU shortfall 18-43 \% in 2030 and 5-35 \% in 2050) \\
+\texttt{saf.\allowbreak{}alt\_\allowbreak{}supply\_\allowbreak{}cap\_\allowbreak{}share} & 0.05 & assumption & additional SAF obtainable in a year (imports, book-and-claim) as share of that year's fuel demand \\
+\texttt{zep.\allowbreak{}entry\_\allowbreak{}year} & 2035 & assumption & earliest plausible EIS of battery/hybrid regional aircraft; Airbus postponed ZEROe in 2025 \\
+\texttt{zep.\allowbreak{}penetration\_\allowbreak{}2050} & 0.4,\allowbreak{} 0.08,\allowbreak{} 0.0,\allowbreak{} 0.0 & assumption & range-feasibility ceilings by band (akinola2025, uddin2025); varied in sensitivity \\
+\texttt{zep.\allowbreak{}upstream\_\allowbreak{}factor} & 2035: 0.3; 2050: 0.1 & assumption & well-to-wake intensity of the ZEP energy carrier relative to fossil kerosene for the same flight \\
+\texttt{corrective.\allowbreak{}advance\_\allowbreak{}years} & 6 & assumption & years by which a retirement is advanced \\
+\texttt{corrective.\allowbreak{}slots\_\allowbreak{}share\_\allowbreak{}of\_\allowbreak{}fleet} & 0.03 & assumption & extra deliveries obtainable per year as share of the band's fleet (manufacturer backlogs); varied 0.01-0.06 \\
+\texttt{corrective.\allowbreak{}discount\_\allowbreak{}rate} & 0.07 & assumption & airline weighted average cost of capital \\
+\texttt{corrective.\allowbreak{}amortisation\_\allowbreak{}years} & 20 & assumption & economic life used in the capital recovery factor \\
+\texttt{corrective.\allowbreak{}penalty\_\allowbreak{}eur\_\allowbreak{}per\_\allowbreak{}t} & 1.0e5 & assumption & penalty on uncompensated emissions; only flags infeasibility \\
