@@ -15,3 +15,4 @@ paper/*.synctex.gz
 # observed data are not committed unless their licence allows it
 data/measured/*.csv
 *:Zone.Identifier
+paper/generated/summary.json
